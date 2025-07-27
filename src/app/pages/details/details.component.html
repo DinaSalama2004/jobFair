@@ -1,0 +1,53 @@
+@if (productDtails) {
+  <div class="container mx-auto px-4 py-6">
+    <div class="grid md:grid-cols-[40%_1fr] gap-6 bg-white dark:bg-gray-900 shadow-lg rounded-xl p-4">
+      
+      
+      <div>
+        <img
+          [src]="productDtails.image"
+          [alt]="productDtails.title"
+          class="w-full h-auto max-h-[300px] object-contain rounded shadow border border-gray-200 dark:border-gray-700"
+        />
+      </div>
+
+      <!-- productDtails Info -->
+      <div class="space-y-3 text-gray-800 dark:text-gray-100">
+        <h2 class="text-xl md:text-2xl font-bold text-orange-600">
+          {{ productDtails.title }}
+        </h2>
+
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          {{ productDtails.description }}
+        </p>
+
+        <div class="text-sm">
+          <span class="font-semibold">Category:</span> {{ productDtails.category }}
+        </div>
+
+        <div class="text-lg font-bold text-orange-500">
+          {{ productDtails.price }} EGP
+        </div>
+
+        <!-- Ratings -->
+        <div class="flex items-center gap-1 text-sm">
+            <i
+              class="fa-star"
+           
+            ></i>
+           {{ productDtails.rating.rate}}
+        
+          <span class="text-gray-500 ml-2">({{ productDtails.rating.count }} ratings)</span>
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button
+          class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md transition-all shadow text-sm font-medium mt-2"
+        
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+}
