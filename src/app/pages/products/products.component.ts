@@ -13,9 +13,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class ProductsComponent implements OnInit {
   products: IProduct[] = []; // fetched from API
-  isLoading = signal(false);
-  error = signal('');
-  successMsg = signal('');
+  isLoading = false;
+  error ='';
+  successMsg = '';
   productForm: FormGroup;
   isModalOpen = false;
 
@@ -55,32 +55,32 @@ export class ProductsComponent implements OnInit {
   submitProduct() {
     if (this.productForm.invalid) return;
 
-    this.isLoading.set(true);
+    this.isLoading=true;
     const productData = this.productForm.value;
 
     this.productService.addProduct(productData).subscribe({
       next: (response) => {
         console.log('Product added successfully:', response);
-        this.isLoading.set(false);
+        this.isLoading=false;
         this.getProducts()
         this.closeModal();
       },
       error: (err) => {
         console.error('Error adding product:', err);
-        this.isLoading.set(false);
+        this.isLoading=false;
       }
     });}
 
   getProducts(): void {
-    this.isLoading.set(true);
+    this.isLoading=true;
     this.productService.getProducts().subscribe({
       next: (data: IProduct[]) => {
         this.products = data;
-        this.isLoading.set(false)
+        this.isLoading=false;
       },
       error: (err) => {
-        this.error.set('Failed to fetch products');
-        this.isLoading.set(false);
+        this.error='Failed to fetch products';
+        this.isLoading=false;
       }
     });
   }
@@ -91,7 +91,7 @@ export class ProductsComponent implements OnInit {
       {
         next: (data) => {
       
-          this.isLoading.set(false)
+          this.isLoading=false;
         },
       }
     )

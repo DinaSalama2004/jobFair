@@ -72,14 +72,14 @@
 
 
 
-  @if (isLoading()) {
+  @if (isLoading) {
     <p class="text-blue-600">Loading products...</p>
   } @else {
-    @if (error()) {
-      <p class="text-red-600">{{ error }}</p>
+    @if (error) {
+      <rp class="text-red-600">{{ error }}</rp>
     }
 
-    @if (successMsg()) {
+    @if (successMsg) {
       <p class="text-green-600">{{ successMsg }}</p>
     }
 

@@ -13,8 +13,7 @@ import { GetProductsService } from '../../../core/services/get Products/get-prod
 })
 export class CardComponent {
 
-  products: IProduct[] = [];
-
+  @Input() products: IProduct[] = [];
   constructor(private productService: GetProductsService) {
     this.loadProducts();
   }
